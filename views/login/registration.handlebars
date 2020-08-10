@@ -1,0 +1,84 @@
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 10px;
+  background-color: white;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 7px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.registerbtn {
+  background-color: black;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+
+
+<div class="form">
+    <form action="/Registration" method="POST" id="formid">
+  <div class="container">
+    <br>
+    <h4 style="text-align: center;" >Registration Form</h4>
+<hr>
+    <label for="fname"><b>First Name</b></label>
+    <input type="text"  name="fname" id="fname" value="{{information.fname}}">
+   
+    <label for="lname"><b>Last Name</b></label>
+    <input type="text"  name="lname" id="lname" value="{{information.lname}}">
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" value="{{information.email}}">
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" id="password" value="{{information.password}}">
+
+
+ {{#each errorMessages}}
+<div><p style="color: black;">{{this}}</p></div>
+{{/each}}
+    <hr>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  <div class="container signin">
+  </div>
+</form>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+<link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+ <header>
+    <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-3 bg-white border-bottom box-shadow fixed-top">
+        <a href="/"><img style="width: 90px; height: 90px;" src="/logo.png" alt="Logo"></a>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2" style="color:#7B8689;" href="/">Home</a>
+             <a class="p-2" style="color:#7B8689;" href="/mealspackages">Meal Packages</a>
+            <a class="p-2" style="color:#7B8689;" href="/registration">Registration</a>
+            <a class="p-2" style="color:#7B8689;" href="/login">Login</a>
+        </nav>
+    </div>
+</header>
+    <main>
+{{{body}}}
+    </main>
+    <footer>
+      <hr>
+<p style="text-align:center; color:black; "><b>GLIB GNENNYI WEB322 @2020</b><br><a href="https://www.instagram.com/super_human_gleb/"><img style="width: 25px; height: 25px;" src="/img/insst.png" alt="Instagram"></a></p>
+    </footer>
+</body>
+<script>
+const modal = document.getElementById('id01');
+
+
+window.onclick = function(event) {
+    if (event.target == modal)  modal.style.display = "none";
+}
+</script>
+</html>

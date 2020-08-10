@@ -1,0 +1,21 @@
+   <div class="jumbotron jumbotron-fluid">
+  <div class="containergif">
+   <h1 style="text-align:center; text-decoration: none; color: white;">Get Your Meals Delivered</h1><br>
+  <h5 style="text-align:center; text-decoration: none; color: white;" >All our packages list</h5>
+  </div>
+</div>
+
+<div class="content">
+    <h4>Chose you meal package</h4><br>
+
+    <div class="grid-container-allmealss" >
+         {{#each data}}
+        <div class="topmealss"> 
+            <img src="/img/{{this.img}}"> <br><br>
+            <h5 id="title"><b>{{this.title}}</b><br></h5>
+           
+            <h5 id="description">{{this.description}}<br></h5>
+            <h5 id="price" style="color: black;"><b>{{this.price}}</b><br></h5>
+        </div>
+    {{/each}}
+    </div>

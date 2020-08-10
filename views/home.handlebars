@@ -1,0 +1,42 @@
+   <div class="jumbotron jumbotron-fluid">
+  <div class="containergif">
+   <h1>Get Your Meals Delivered</h1><br>
+  <a href="/mealspackages" style="text-decoration: none; color: white; background-color:rgb(119, 118, 118)">View All Packages</a>
+    </div>
+</div>
+
+<div class="content">
+    <h2>No cooking, just eating</h2><br>
+    <div class="grid-container" >
+        <div class="grid-item">
+            <div class="text col-md-3"><i class="fa fa-hand-pointer-o fa-5x" aria-hidden="true"></i></br>Choose</div>
+        </div>
+        <div class="grid-item">
+            <div class="text col-md-3"><i class="fa fa-fire fa-5x" aria-hidden="true"></i></br>Heat</div>
+
+        </div>
+        <div class="grid-item">
+            <div class="text col-md-3"><i class="fa fa-cutlery fa-5x" aria-hidden="true"></i></br>Eat</div>
+
+        </div>
+        <div class="grid-item">
+            <div class="text col-md-3"><i class="fa fa-repeat fa-5x" aria-hidden="true"></i></br>Repeat</div>
+ 
+        </div>
+    </div>
+</div>
+<hr>
+<div class="content">
+    <br><h4>Pick one of our top meals and they are going to be delivered to your place!</h2>
+    <br>
+    <div class="grid-container-allmeals" >
+         {{#each data}}
+        <div class="topmeals"> 
+            <img src="/img/{{this.img}}" class="img-fluid"> <br>
+            <span id="title"><b>{{this.title}}</b><br></span>
+            <span id="price" style="color: black;"><b>{{this.price}}</b><br></span>
+        </div>
+    {{/each}}
+    </div>
+    <br><br><br>
+</div>
