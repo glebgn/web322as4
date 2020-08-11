@@ -11,11 +11,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    let information = {
-
+    let infoData = {
+        email : req.body.email,
+        password : req.body.password    
     };
-    information.email = req.body.email;
-    information.password = req.body.password;
 
     db.validateUserLogin(req.body)
         .then((user) => {
@@ -35,7 +34,7 @@ router.post("/", (req, res) => {
 
                 title: "Login Page",
                 errorMessages: user.errors,
-                information: information
+                infoData: infoData
 
             });
         });

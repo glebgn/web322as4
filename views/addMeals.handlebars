@@ -1,0 +1,45 @@
+<form class="modal-content" action="/Dashboard/addMeals" method="POST" enctype="multipart/form-data">
+
+
+         {{#if ifAdded}}
+            <h2>You have added a new package to the DataBase!</h2>
+        {{/if}}
+
+ 
+<br>
+        <label for="title"><b>     Title</b></label>
+        <input type="text" placeholder="Title" name="title" value="{{information.title}}">
+
+        <label for="category"><b>     Category</b></label>
+        <input type="text" placeholder="Category" name="category" value="{{information.category}}">
+
+        <label for="price"><b>     Price</b></label>
+        <input type="text" placeholder="Price" name="price" value="{{information.price}}">
+
+        <label for="meals"><b>     Number of Meals</b></label>
+        <input style="width: 5em;" type="number" name="meals" value="{{information.meals}}">
+<br>
+        <label for="description"><b>     Description</b></label>
+        <input type="text" placeholder="Description" name="description" value="{{information.description}}">
+
+        <label for="picture"><b>     Photo</b></label>
+        <input type="file" name="picture">
+
+        <label for="top"><b>     Top Meal?</b></label>
+        <input  type="checkbox" name="top" value="true"> <b>Yes</b>
+
+
+        <br>
+
+    {{#if error}}
+            <p style="color: black;">All fields required.</p>
+ {{/if}}
+
+ <br>
+
+        <button type="submit" class="addbtn">Add the Meal </button>
+
+    <br>    
+
+    <button onclick="location.href='/Dashboard/DataClerk'" type="button"  style="position:relative" class="addbtn">Previous page</button>
+</form>

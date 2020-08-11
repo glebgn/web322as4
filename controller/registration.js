@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
 
-    let information = {
+    let infoData = {
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
         res.render("login/registration", {
             title: "Registration Page",
             errorMessages: data.errors,
-            information: information
+            infoData: infoData
         });
     });
 });

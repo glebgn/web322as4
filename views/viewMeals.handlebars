@@ -1,0 +1,29 @@
+
+
+<div class="content"> 
+    <br><br><h4>The list of all meals</h4><hr>
+  {{#if added}}
+    <div class="grid-container-allmealss" >
+         {{#each data}}
+        <div class="topmealss"> 
+            <br>
+            <img src="/img/{{this.img}}"> <br><br>
+            <h5 id="title"><b>{{this.title}}</b><br></h5>
+            <h5 id="category"><b>Category:</b> {{this.category}}<br></h5>
+            <h5 id="description">{{this.description}}<br></h5>
+            <h5 id="numofmeals"><b>Meals in package:</b> {{this.meals}}<br></h5>
+            <h id="price" style="color: black;"><b>{{this.price}}$</b><br></h5>
+     </div> 
+    {{/each}}
+    </div>
+    {{else}}
+        <h4>No meals have been added so far!</h4>
+    {{/if}}
+    
+    
+    </div>
+    <br><br><br>
+
+<div class="buttt">
+   <button onclick="location.href='/Dashboard/DataClerk'" type="button"  style="position:relative" class="addbtn">Previous page</button>
+   </div>

@@ -1,3 +1,5 @@
+/* https://github.com/glebgn/web322as3 */
+
 const express = require('express');
 const exphbs = require('express-handlebars');
 const app = express();

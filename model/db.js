@@ -18,6 +18,10 @@ let userSchema = new Schema({
         type: String,
         required: true
     },
+    admin:{
+        type:Boolean,
+        default:false
+    }
 
 });
 
@@ -217,3 +221,176 @@ module.exports.acceptEmail = function(Email) {
     });
 }
 
+
+//
+//
+// AS4 
+
+
+
+
+
+module.exports.getPacks = (ttitle) => {
+    return new Promise((resolve, reject) => {
+        Packages.find({ title: ttitle })
+            .exec()
+            .then((package) => {
+                if (package.length != 0) {
+                    resolve(package.map((ppackage) => ppackage.toObject()));
+                } else {
+                    reject("No meals have been found");
+                }
+
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    });
+};
+
+module.exports.packageErrors = (data) => {
+    return new Promise((resolve, reject) => {
+        data.errors = [];
+        const numbersCheck = /[0-9]+[.]?[0-9]*/;
+        data.top = (data.top) ? true : false;
+
+        let temp = true;
+
+        if (data.title == "") {
+            data.errors.push("Title is requried");
+            temp = false;
+        }
+
+        if (data.category == "") {
+            data.errors.push("Category of Meal is required");
+            temp = false;
+        }
+
+        if (data.price == "") {
+            data.errors.push("Price is required");
+            temp = false;
+        } else {
+
+            if (!data.price.match(numbersCheck)) {
+                data.errors.push("Only numbers!");
+                temp = false;
+            }
+        }
+
+        if (data.description == "") {
+            data.errors.push("Description is required");
+            temp = false;
+        }
+
+        if (!temp) {
+            reject(data);
+        } else {
+            this.getPacks(data.title)
+                .then((meal) => {
+                    data.errors.push("This meal is already registered ");
+                    reject(data);
+                })
+                .catch(() => {
+                    resolve(data);
+                });
+        }
+    });
+}
+
+
+module.exports.addMeal = (data) => {
+    return new Promise((resolve, reject) => {
+        let newPackage = new Packages({
+            title: data.title,
+            category: data.category,
+            price: data.price,
+            meals: data.meals,
+            description: data.description,
+            top: data.top,
+            img: data.img
+
+        });
+
+        newPackage.save((err) => {
+            if (err) {
+                console.log("Error: " + err);
+                reject(err);
+            } else {
+                console.log("Meal to add: " + data.title);
+                resolve(newPackage);
+            }
+        });
+    });
+}
+
+// EDIT THING 
+module.exports.MealEditErrors = function(data) {
+    return new Promise((resolve, reject) => {
+        data.errors = {};
+        var check = true;
+
+        data.top = (data.top) ? true : false;
+
+        
+        if (data.title == "") {
+            data.errors.title = "Title is required";
+            check = false;
+        }
+
+        if (data.category == "") {
+            data.errors.category = "Category is required";
+            check = false;
+        }
+
+        if (data.img == "") {
+            data.errors.img = "Image is required";
+            check = false;
+        }
+
+
+        if (data.price == "") {
+            data.errors.price = "Price is required";
+            check = false;
+        } else {
+            var numbersonly = /[0-9]+[.]?[0-9]*/;
+            if (!data.price.match(numbersonly)) {
+                data.errors.price = "This field should only include numbers";
+                check = false;
+            }
+        }
+
+        if (data.description == "") {
+            data.errors.description = "Description is required";
+            check = false;
+        }
+
+        if (!check) {
+            reject(data);
+        } else {
+            resolve(data);
+        }
+    });
+}
+
+module.exports.mealUpdate = (data) => {
+    return new Promise((resolve, reject) => {
+        data.top = (data.top) ? true : false;
+        Packages.updateOne({ title: data.title }, {
+                $set: {
+                    img: data.img,
+                    category: data.category,
+                    price: data.price,
+                    meals: data.meals,
+                    description: data.description,
+                    top: data.top
+                }
+            })
+            .exec()
+            .then(() => {
+                console.log(`Meal ${data.title} has been updated`);
+                resolve();
+            }).catch((err) => {
+                reject(err);
+            });
+    });
+}

@@ -58,16 +58,18 @@ a {
     <h4 style="text-align: center;" >Registration Form</h4>
 <hr>
     <label for="fname"><b>First Name</b></label>
-    <input type="text"  name="fname" id="fname" value="{{information.fname}}">
+    <input type="text"  name="fname" id="fname" value="{{infoData.fname}}">
    
     <label for="lname"><b>Last Name</b></label>
-    <input type="text"  name="lname" id="lname" value="{{information.lname}}">
+    <input type="text"  name="lname" id="lname" value="{{infoData.lname}}">
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" value="{{information.email}}">
+    <input type="text" placeholder="Enter Email" name="email" id="email" value="{{infoData.email}}">
 
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" value="{{information.password}}">
+    <input type="password" placeholder="Enter Password" name="password" id="password" value="{{infoData.password}}">
+
+
 
 
  {{#each errorMessages}}
